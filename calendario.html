@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Principal - Nica Raíces</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#ffe5b4;
+      --card:#fffbf0;
+      --muted:#555;
+      --text:#2c2c2c;
+      --brand:#ff6f61;
+      --brand2:#ffb347;
+      --radius:20px;
+      --shadow:0 15px 40px rgba(0,0,0,.3);
+      --nica-blue:#0057b7;
+      --nica-white:#fff;
+      --nica-light-blue:#00aaff;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%; margin:0; font-family:Inter,system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif; background: var(--bg); color:var(--text);}
+    a{text-decoration:none; color:inherit;}
+    body{display:flex;}
+
+    /* Sidebar */
+    .sidebar{width:280px; background:var(--brand); color:white; padding:25px; display:flex; flex-direction:column; height:100vh; position:sticky; top:0; font-weight:600;}
+    .sidebar h2{font-size:22px; margin-bottom:25px; text-align:center; text-shadow:1px 1px 3px rgba(0,0,0,.3);}
+    .sidebar a{padding:12px 16px; margin-bottom:12px; border-radius:15px; background:rgba(255,255,255,.15); cursor:pointer; transition:0.3s;}
+    .sidebar a:hover{background:rgba(255,255,255,.35);}
+
+    /* Main content */
+    .main{flex:1; padding:35px; overflow-y:auto;}
+    .card{background:var(--card); border-radius:var(--radius); box-shadow:var(--shadow); padding:25px; margin-bottom:25px; border-left:8px solid var(--brand); color:#222;}
+    h1,h2,h3{margin-top:0; font-family:'Inter',sans-serif;}
+    h1 span.nica-blue{color:var(--nica-blue);} h1 span.nica-white{color:var(--nica-white);} h1 span.nica-light-blue{color:var(--nica-light-blue);}
+    .muted{color:var(--muted); font-style:italic;}
+
+    /* Galería */
+    .gallery{display:flex; flex-wrap:wrap; gap:15px; margin-top:15px;}
+    .gallery img{width:100%; max-width:350px; border-radius:20px; border:3px solid var(--brand2);}
+
+    /* Equipo */
+    .team{display:flex; gap:15px; flex-wrap:wrap; margin-top:15px;}
+    .team-member{width:150px; text-align:center; background:#fff5e6; padding:10px; border-radius:20px; box-shadow:0 8px 20px rgba(0,0,0,.25);}
+    .team-member img{width:100%; border-radius:20px; border:2px solid var(--brand2);}
+
+    /* Calendario */
+    .calendar-month{margin-top:20px;}
+    .calendar-month h3{text-align:center; margin-bottom:10px;}
+    .calendar{display:grid; grid-template-columns:repeat(7,1fr); gap:5px;}
+    .calendar div{background:#fff5e6; padding:8px; border-radius:15px; text-align:center; box-shadow:0 4px 15px rgba(0,0,0,.2);}
+    .calendar .header{font-weight:700; background:var(--brand); color:white;}
+
+    @media (max-width:900px){body{flex-direction:column;} .sidebar{width:100%; height:auto;} .calendar{grid-template-columns:repeat(2,1fr);}}
+  </style>
+</head>
+<body>
+<div class="sidebar">
+  <h2>Nica Raíces 🇳🇮</h2>
+  <a href="index.html">inicio</a>
+  <a href="historia.html">Historia</a>
+  <a href="comidas.html">Comidas</a>
+  <a href="municipios.html">Municipios</a>
+  <a href="danzas.html">Danzas y Vestuario</a>
+  <a href="calendario.html">Calendario de Actividades</a>
+  <a href="juegos.html">Juegos Interactivos</a>
+</div>
+
+  <div class="main">
+    <!-- Contenido previo omitido -->
+
+    <div class="card">
+      <h2>Calendario de Actividades 2025</h2>
+
+      <!-- Repetir cada mes -->
+      <div class="calendar-month">
+        <h3>Enero</h3>
+        <div class="calendar">
+          <div class="header">Dom</div><div class="header">Lun</div><div class="header">Mar</div><div class="header">Mié</div><div class="header">Jue</div><div class="header">Vie</div><div class="header">Sáb</div>
+          <div>1<br><small>Evento 1</small></div><div>2</div><div>3</div><div>4</div><div>5<br><small>Evento 2</small></div><div>6</div><div>7</div>
+          <!-- Continúa con los demás días -->
+        </div>
+      </div>
+
+      <div class="calendar-month">
+        <h3>Febrero</h3>
+        <div class="calendar">
+          <div class="header">Dom</div><div class="header">Lun</div><div class="header">Mar</div><div class="header">Mié</div><div class="header">Jue</div><div class="header">Vie</div><div class="header">Sáb</div>
+          <div>1</div><div>2</div><div>3</div><div>4</div><div>5</div><div>6</div><div>7</div>
+        </div>
+      </div>
+
+      <!-- Repetir para los otros 10 meses -->
+      <!-- Marzo -->
+      <div class="calendar-month">
+        <h3>Marzo</h3>
+        <div class="calendar">
+          <div class="header">Dom</div><div class="header">Lun</div><div class="header">Mar</div><div class="header">Mié</div><div class="header">Jue</div><div class="header">Vie</div><div class="header">Sáb</div>
+          <div>1</div><div>2</div><div>3</div><div>4</div><div>5</div><div>6</div><div>7</div>
+        </div>
+      </div>
+
+      <!-- Abril -->
+      <div class="calendar-month">
+        <h3>Abril</h3>
+        <div class="calendar">
+          <div class="header">Dom</div><div class="header">Lun</div><div class="header">Mar</div><div class="header">Mié</div><div class="header">Jue</div><div class="header">Vie</div><div class="header">Sáb</div>
+          <div>1</div><div>2</div><div>3</div><div>4</div><div>5</div><div>6</div><div>7</div>
+        </div>
+      </div>
+
+      <!-- Mayo -->
+      <div class="calendar-month">
+        <h3>Mayo</h3>
+        <div class="calendar">
+          <div class="header">Dom</div><div class="header">Lun</div><div class="header">Mar</div><div class="header">Mié</div><div class="header">Jue</div><div class="header">Vie</div><div class="header">Sáb</div>
+          <div>1</div><div>2</div><div>3</div><div>4</div><div>5</div><div>6</div><div>7</div>
+        </div>
+      </div>
+
+      <!-- Junio -->
+      <div class="calendar-month">
+        <h3>Junio</h3>
+        <div class="calendar">
+          <div class="header">Dom</div><div class="header">Lun</div><div class="header">Mar</div><div class="header">Mié</div><div class="header">Jue</div><div class="header">Vie</div><div class="header">Sáb</div>
+          <div>1</div><div>2</div><div>3</div><div>4</div><div>5</div><div>6</div><div>7</div>
+        </div>
+      </div>
+
+      <!-- Julio -->
+      <div class="calendar-month">
+        <h3>Julio</h3>
+        <div class="calendar">
+          <div class="header">Dom</div><div class="header">Lun</div><div class="header">Mar</div><div class="header">Mié</div><div class="header">Jue</div><div class="header">Vie</div><div class="header">Sáb</div>
+          <div>1</div><div>2</div><div>3</div><div>4</div><div>5</div><div>6</div><div>7</div>
+        </div>
+      </div>
+
+      <!-- Agosto -->
+      <div class="calendar-month">
+        <h3>Agosto</h3>
+        <div class="calendar">
+          <div class="header">Dom</div><div class="header">Lun</div><div class="header">Mar</div><div class="header">Mié</div><div class="header">Jue</div><div class="header">Vie</div><div class="header">Sáb</div>
+          <div>1</div><div>2</div><div>3</div><div>4</div><div>5</div><div>6</div><div>7</div>
+        </div>
+      </div>
+
+      <!-- Septiembre -->
+      <div class="calendar-month">
+        <h3>Septiembre</h3>
+        <div class="calendar">
+          <div class="header">Dom</div><div class="header">Lun</div><div class="header">Mar</div><div class="header">Mié</div><div class="header">Jue</div><div class="header">Vie</div><div class="header">Sáb</div>
+          <div>1</div><div>2</div><div>3</div><div>4</div><div>5</div><div>6</div><div>7</div>
+        </div>
+      </div>
+
+      <!-- Octubre -->
+      <div class="calendar-month">
+        <h3>Octubre</h3>
+        <div class="calendar">
+          <div class="header">Dom</div><div class="header">Lun</div><div class="header">Mar</div><div class="header">Mié</div><div class="header">Jue</div><div class="header">Vie</div><div class="header">Sáb</div>
+          <div>1</div><div>2</div><div>3</div><div>4</div><div>5</div><div>6</div><div>7</div>
+        </div>
+      </div>
+
+      <!-- Noviembre -->
+      <div class="calendar-month">
+        <h3>Noviembre</h3>
+        <div class="calendar">
+          <div class="header">Dom</div><div class="header">Lun</div><div class="header">Mar</div><div class="header">Mié</div><div class="header">Jue</div><div class="header">Vie</div><div class="header">Sáb</div>
+          <div>1</div><div>2</div><div>3</div><div>4</div><div>5</div><div>6</div><div>7</div>
+        </div>
+      </div>
+
+      <!-- Diciembre -->
+      <div class="calendar-month">
+        <h3>Diciembre</h3>
+        <div class="calendar">
+          <div class="header">Dom</div><div class="header">Lun</div><div class="header">Mar</div><div class="header">Mié</div><div class="header">Jue</div><div class="header">Vie</div><div class="header">Sáb</div>
+          <div>1</div><div>2</div><div>3</div><div>4</div><div>5</div><div>6</div><div>7</div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</body>
+</html>

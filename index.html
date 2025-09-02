@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Principal - Nica Raíces</title>
+  <link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#ff6f61">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#ffe5b4;
+      --card:#fffbf0;
+      --muted:#555;
+      --text:#2c2c2c;
+      --brand:#ff6f61;
+      --brand2:#ffb347;
+      --radius:20px;
+      --shadow:0 15px 40px rgba(0,0,0,.3);
+      --nica-blue:#0057b7;
+      --nica-white:#fff;
+      --nica-light-blue:#00aaff;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%; margin:0; font-family:Inter,system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif; background: var(--bg); color:var(--text);}
+    a{text-decoration:none; color:inherit;}
+    body{display:flex;}
+
+    /* Sidebar */
+    .sidebar{width:280px; background:var(--brand); color:white; padding:25px; display:flex; flex-direction:column; height:100vh; position:sticky; top:0; font-weight:600;}
+    .sidebar h2{font-size:22px; margin-bottom:25px; text-align:center; text-shadow:1px 1px 3px rgba(0,0,0,.3);}
+    .sidebar a{padding:12px 16px; margin-bottom:12px; border-radius:15px; background:rgba(255,255,255,.15); cursor:pointer; transition:0.3s;}
+    .sidebar a:hover{background:rgba(255,255,255,.35);}
+
+    /* Main content */
+    .main{flex:1; padding:35px; overflow-y:auto;}
+    .card{background:var(--card); border-radius:var(--radius); box-shadow:var(--shadow); padding:25px; margin-bottom:25px; border-left:8px solid var(--brand);}
+    h1,h2,h3{margin-top:0; font-family:'Inter',sans-serif;}
+    h1 span.nica-blue{color:var(--nica-blue);} h1 span.nica-white{color:var(--nica-white);} h1 span.nica-light-blue{color:var(--nica-light-blue);}
+    .muted{color:var(--muted); font-style:italic;}
+
+    /* Galería */
+    .gallery{display:flex; flex-wrap:wrap; gap:15px; margin-top:15px;}
+    .gallery img{width:100%; max-width:350px; border-radius:20px; border:3px solid var(--brand2);}
+
+    /* Equipo */
+    .team{display:flex; gap:15px; flex-wrap:wrap; margin-top:15px;}
+    .team-member{width:150px; text-align:center; background:#fff5e6; padding:10px; border-radius:20px; box-shadow:0 8px 20px rgba(0,0,0,.25);}
+    .team-member img{width:100%; border-radius:20px; border:2px solid var(--brand2);}
+
+    /* Animaciones */
+    .card, .team-member, .gallery img{transition: transform 0.3s, box-shadow 0.3s;}
+    .card:hover, .team-member:hover, .gallery img:hover{transform:scale(1.05); box-shadow:0 20px 50px rgba(0,0,0,.35);}
+
+    @media (max-width:900px){body{flex-direction:column;} .sidebar{width:100%; height:auto;} }
+  </style>
+</head>
+<script>
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('sw.js')
+      .then(() => console.log('Service Worker registrado'))
+      .catch(err => console.log('Error SW:', err));
+  }
+</script>
+
+<body>
+<div class="sidebar">
+  <h2>Nica Raíces 🇳🇮</h2>
+  <a href="index.html">inicio</a>
+  <a href="historia.html">Historia</a>
+  <a href="comidas.html">Comidas</a>
+  <a href="municipios.html">Municipios</a>
+  <a href="danzas.html">Danzas y Vestuario</a>
+  <a href="calendario.html">Calendario de Actividades</a>
+  <a href="juegos.html">Juegos Interactivos</a>
+</div>
+
+
+  <div class="main">
+    <div class="card">
+      <h1><span class="nica-blue">N</span><span class="nica-white">i</span><span class="nica-light-blue">ca</span> Raíces</h1>
+      <p class="muted">Un viaje vibrante a través de nuestra historia, tradiciones, colores y sabores que hacen único a nuestro país.</p>
+    </div>
+
+    <div class="card">
+      <h2>Quiénes somos</h2>
+      <p>Somos un equipo apasionado por la riqueza cultural de Nicaragua y queremos transmitirla de manera interactiva y envolvente, usando colores, imágenes y elementos que reflejan nuestra identidad.</p>
+    </div>
+
+    <div class="card">
+      <h2>Nuestros objetivos</h2>
+      <ul>
+        <li>Mostrar la historia, gastronomía y expresiones culturales nicaragüenses.</li>
+        <li>Crear un espacio interactivo y visualmente impactante para todos los públicos.</li>
+        <li>Fomentar orgullo y conocimiento sobre la diversidad de nuestras regiones.</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h2>Nuestras metas</h2>
+      <ul>
+        <li>Incorporar imágenes, videos y elementos interactivos de Nicaragua.</li>
+        <li>Diseñar galerías y exposiciones que reflejen la riqueza de nuestra cultura.</li>
+        <li>Educar y entretener mediante una experiencia visual maximalista.</li>
+      </ul>
+    </div>
+
+
+    <div class="card">
+      <h2>Equipo de trabajo</h2>
+      <div class="team">
+        <div class="team-member">
+          <img src="" alt="Persona 1">
+          <p><strong>Nombre 1</strong></p>
+          <p>Función 1</p>
+        </div>
+        <div class="team-member">
+          <img src="" alt="Persona 2">
+          <p><strong>Nombre 2</strong></p>
+          <p>Función 2</p>
+        </div>
+        <div class="team-member">
+          <img src="" alt="Persona 3">
+          <p><strong>Nombre 3</strong></p>
+          <p>Función 3</p>
+        </div>
+        <div class="team-member">
+          <img src="" alt="Persona 4">
+          <p><strong>Nombre 4</strong></p>
+          <p>Función 4</p>
+        </div>
+        <div class="team-member">
+          <img src="" alt="Persona 5">
+          <p><strong>Nombre 5</strong></p>
+          <p>Función 5</p>
+        </div>
+        <div class="team-member">
+          <img src="" alt="Persona 6">
+          <p><strong>Nombre 6</strong></p>
+          <p>Función 6</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Placeholder para enlaces de barra lateral
+  </script>
+</body>
+</html>
