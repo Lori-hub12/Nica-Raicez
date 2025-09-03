@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Departamentos - Nica Raíces</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#ffe5b4;
+      --card:#fffbf0;
+      --muted:#555;
+      --text:#2c2c2c;
+      --brand:#ff6f61;
+      --brand2:#ffb347;
+      --radius:20px;
+      --shadow:0 15px 40px rgba(0,0,0,.3);
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%; margin:0; font-family:Inter,system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif; background: var(--bg); color:var(--text);}
+    a{text-decoration:none; color:inherit;}
+    body{display:flex;}
+
+    /* Sidebar */
+    .sidebar{width:280px; background:var(--brand); color:white; padding:25px; display:flex; flex-direction:column; height:100vh; position:sticky; top:0; font-weight:600;}
+    .sidebar h2{font-size:22px; margin-bottom:25px; text-align:center; text-shadow:1px 1px 3px rgba(0,0,0,.3);}
+    .sidebar a{padding:12px 16px; margin-bottom:12px; border-radius:15px; background:rgba(255,255,255,.15); cursor:pointer; transition:0.3s;}
+    .sidebar a:hover, .sidebar a.active{background:rgba(255,255,255,.35); transform:scale(1.05);}
+
+    /* Main content */
+    .main{flex:1; padding:35px; overflow-y:auto;}
+    .card{background:var(--card); border-radius:var(--radius); box-shadow:var(--shadow); padding:15px; margin-bottom:25px; border-left:8px solid var(--brand);}
+    h1,h2,h3{margin-top:0; font-family:'Inter',sans-serif;}
+
+    /* Search bar */
+    .search-bar{margin-bottom:25px; display:flex; justify-content:center;}
+    .search-bar input{padding:10px; width:50%; border-radius:15px; border:2px solid var(--brand);}
+
+    /* Cards de departamentos */
+    .dept-container{display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:20px;}
+    .dept-card{background:#fff5e6; border-radius:20px; box-shadow:0 8px 20px rgba(0,0,0,.25); overflow:hidden; display:flex; flex-direction:column; transition: transform 0.3s, box-shadow 0.3s;}
+    .dept-card:hover{transform:scale(1.05); box-shadow:0 15px 35px rgba(0,0,0,.35);}
+    .dept-card img{width:200px; height:200px; object-fit:cover; border-radius:20px; align-self:center; margin-top:15px;}
+    .dept-card .card-body{padding:15px; flex:1; display:flex; flex-direction:column; justify-content:space-between;}
+    .dept-card h5{margin:0 0 10px 0;}
+    .dept-card p{margin:0 0 10px 0; flex:1;}
+    .dept-card a{align-self:flex-start; padding:8px 12px; background:var(--brand); color:white; border-radius:12px; text-decoration:none; font-weight:600;}
+
+    @media (max-width:900px){body{flex-direction:column;} .sidebar{width:100%; height:auto;}}
+  </style>
+</head>
+<body>
+<div class="sidebar">
+  <h2>Nica Raíces 🇳🇮</h2>
+  <a href="index.html">Inicio</a>
+  <a href="historia.html">Historia</a>
+  <a href="comidas.html">Comidas</a>
+  <a href="departamentos.html" class="active">Departamentos</a>
+  <a href="danzas.html">Danzas y Vestuario</a>
+  <a href="calendario.html">Calendario de Actividades</a>
+  <a href="juegos.html">Juegos Interactivos</a>
+</div>
+
+<div class="main">
+  <h1>Departamentos de Nicaragua</h1>
+
+  <div class="search-bar">
+    <input type="text" id="searchInput" placeholder="Buscar departamento..." onkeyup="filterDepts()">
+  </div>
+
+  <div class="dept-container" id="deptContainer">
+    <div class="dept-card">
+      <img src="https://cdn.britannica.com/68/193868-050-EF207967/Plaza-de-la-Revolucion-Managua-Nicaragua.jpg" alt="Managua">
+      <div class="card-body">
+        <h5>Managua</h5>
+        <p>Capital y departamento central, con la mayor densidad de población.</p>
+        <a href="#">Ver más</a>
+      </div>
+    </div>
+
+    <div class="dept-card">
+      <img src="https://tse3.mm.bing.net/th/id/OIP.xZ3Of6Tf0dHYPcl0rFSnPQAAAA?rs=1&pid=ImgDetMain&o=7&rm=3" alt="León">
+      <div class="card-body">
+        <h5>León</h5>
+        <p>Famoso por su historia colonial y universidades.</p>
+        <a href="#">Ver más</a>
+      </div>
+    </div>
+
+    <div class="dept-card">
+      <img src="https://lonelyplanetimages.imgix.net/mastheads/GettyImages-155350183_super.jpg?sharp=10&vib=20&w=1200" alt="Granada">
+      <div class="card-body">
+        <h5>Granada</h5>
+        <p>Destacado por su arquitectura colonial y turismo cultural.</p>
+        <a href="#">Ver más</a>
+      </div>
+    </div>
+
+    <div class="dept-card">
+      <img src="https://th.bing.com/th/id/R.c9442c7d2aa028ce6213a13c50ea5191?rik=23x0U96gixzH8A&pid=ImgRaw&r=0" alt="Masaya">
+      <div class="card-body">
+        <h5>Masaya</h5>
+        <p>Conocido por su folklore, artesanías y el mercado de artesanías.</p>
+        <a href="#">Ver más</a>
+      </div>
+    </div>
+
+    <div class="dept-card">
+      <img src="https://www.fotopaises.com/Fotos-Paises/t/2012/1/20/2786_1327008156.jpg" alt="Chinandega">
+      <div class="card-body">
+        <h5>Chinandega</h5>
+        <p>Importante por su agricultura y volcanes cercanos.</p>
+        <a href="#">Ver más</a>
+      </div>
+    </div>
+
+
+    <div class="dept-card">
+      <img src="https://www.melonthego.com/wp-content/uploads/2017/02/RivasParque.jpg" alt="Rivas">
+      <div class="card-body">
+        <h5>Rivas</h5>
+        <p>Famoso por sus playas y turismo de sol y mar.</p>
+        <a href="#">Ver más</a>
+        </div>
+        </div>
+
+         <div class="dept-card">
+      <img src="https://www.visitanicaragua.com/wp-content/uploads/2018/07/Iglesia.jpg" alt="Boaco ">
+      <div class="card-body">
+        <h5>Boaco </h5>
+        <p>Boaco es conocido como la “Ciudad de Dos Pisos” por su geografía llena de colinas.</p>
+        <a href="#">Ver más</a>
+      </div>
+      </div>
+
+       <div class="dept-card">
+      <img src="https://lanicaraguadehoy.weebly.com/uploads/1/2/2/5/122510359/1-carazoparroquia-jinotepe_orig.jpg" alt="Carazo ">
+      <div class="card-body">
+        <h5>Carazo </h5>
+        <p>Carazo combina playas en el Pacífico con montañas cafetaleras. Es famoso por el surf en La Boquita y Huehuete, así como por su producción de café de altura.</p>
+        <a href="#">Ver más</a>
+      </div>
+      </div>
+
+       <div class="dept-card">
+      <img src="https://nicaragua-travel-guide.com/site/wp-content/uploads/2016/07/Juigalpa-Chontales-Visita-Guiada-Nicaragua-Travel-Guide.jpg" alt="Chontales ">
+      <div class="card-body">
+        <h5>Chontales</h5>
+        <p>Con Juigalpa como capital, Chontales es el epicentro de la ganadería en Nicaragua. Sus extensas sabanas y paisajes rurales lo hacen único.</p>
+        <a href="#">Ver más</a>
+      </div>
+      </div>
+
+       <div class="dept-card">
+      <img src="https://tse1.mm.bing.net/th/id/OIP.-9IxaCnCTL5f7EG4sFZePQHaEo?rs=1&pid=ImgDetMain&o=7&rm=3" alt="Esteli ">
+      <div class="card-body">
+        <h5>Esteli </h5>
+        <p>Estelí es conocido mundialmente por la calidad de sus cigarros, considerados entre los mejores del mundo.</p>
+        <a href="#">Ver más</a>
+      </div>
+      </div>
+
+       <div class="dept-card">
+      <img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/18/bc/79/8a/en-1705-fray-antonio.jpg?w=1000&h=500&s=1" alt="Jinotega ">
+      <div class="card-body">
+        <h5>Jinotega </h5>
+        <p>Ubicada en tierras altas, Jinotega es famosa por sus montañas, bosques y su excelente café, considerado de los mejores del país.</p>
+        <a href="#">Ver más</a>
+      </div>
+      </div>
+
+         <div class="dept-card">
+      <img src="https://2.bp.blogspot.com/-WUJh8opTrBM/TpaM_qBxT_I/AAAAAAAAV2A/rToqk8sR_04/s1600/madrizrd5.jpg" alt="Madriz ">
+      <div class="card-body">
+        <h5>Madriz </h5>
+        <p>Con Somoto como capital, Madriz es conocido por el Cañón de Somoto, una maravilla natural.</p>
+        <a href="#">Ver más</a>
+      </div>
+      </div>
+
+
+         <div class="dept-card">
+      <img src="https://tse4.mm.bing.net/th/id/OIP.bVLpJOkxrO4Zs1P1gqVLqQHaE7?rs=1&pid=ImgDetMain&o=7&rm=3" alt="Nueva Segovia ">
+      <div class="card-body">
+        <h5>Nueva Segovia </h5>
+        <p>Región montañosa famosa por la resistencia indígena y la gesta de Sandino. Sus paisajes cafetaleros y sus ciudades como Ocotal destacan por su tradición cultural e histórica.</p>
+        <a href="#">Ver más</a>
+      </div>
+      </div>
+
+         <div class="dept-card">
+      <img src="https://cdn.audleytravel.com/3990/2850/79/521148-san-juan-river-nicaragua.jpg" alt="Rio San Juan  ">
+      <div class="card-body">
+        <h5>Rio San Juan  </h5>
+        <p>Con el histórico Río San Juan como eje, esta región es rica en biodiversidad y patrimonio cultural. San Carlos y El Castillo son destinos de turismo ecológico e histórico, rodeados de selvas, ríos y vida silvestre.</p>
+        <a href="#">Ver más</a>
+      </div>
+      </div>
+
+         <div class="dept-card">
+      <img src="https://img.jamesedition.com/listing_images/2024/06/07/15/00/10/9cc17231-098b-439b-ad6e-32a367456615/je/1040x620xc.jpg" alt="Region Autónoma del Atlantico Norte  ">
+      <div class="card-body">
+        <h5>Region Autónoma del Atlantico Norte </h5>
+        <p>Con Bilwi como cabecera, es una zona de gran diversidad étnica y cultural. Sus comunidades misquitas, mayagnas y afrodescendientes enriquecen la identidad del país.</p>
+        <a href="#">Ver más</a>
+      </div>
+      </div>
+
+         <div class="dept-card">
+      <img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/0f/ed/02/8e/vista-de-la-playa-mas.jpg?w=700&h=500&s=1" alt="Region Autónoma del Atlantico Sur ">
+      <div class="card-body">
+        <h5>Region Autónoma del Atlantico Sur </h5>
+        <p>Con Bluefields como capital, la RAAS combina cultura afrocaribeña y mestiza. Es famosa por Corn Island, sus playas paradisíacas, y por la Reserva Biológica Indio Maíz, una de las más importantes del país.</p>
+        <a href="#">Ver más</a>
+      </div>
+      </div>
+ </div>
+</div>
+
+<script>
+function filterDepts() {
+  const input = document.getElementById('searchInput');
+  const filter = input.value.toLowerCase();
+  const container = document.getElementById('deptContainer');
+  const cards = container.getElementsByClassName('dept-card');
+
+  for (let i = 0; i < cards.length; i++) {
+      const title = cards[i].getElementsByTagName('h5')[0].textContent.toLowerCase();
+      if (title.indexOf(filter) > -1) {
+        cards[i].style.display = '';
+      } else {
+        cards[i].style.display = 'none';
+      }
+    }
+  }
+</script>
+</body>
+</html>

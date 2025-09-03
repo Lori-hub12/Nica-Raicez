@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Historia - Nica Raíces</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#ffe5b4;
+      --card:#fffbf0;
+      --text:#2c2c2c;
+      --brand:#ff6f61;
+      --radius:20px;
+      --shadow:0 15px 40px rgba(0,0,0,.3);
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%; margin:0; font-family:Inter,system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif; background: var(--bg); color:var(--text);}
+    a{text-decoration:none; color:inherit;}
+    body{display:flex;}
+
+    /* Sidebar */
+    .sidebar{width:280px; background:var(--brand); color:white; padding:25px; display:flex; flex-direction:column; height:100vh; position:sticky; top:0; font-weight:600;}
+    .sidebar h2{font-size:22px; margin-bottom:25px; text-align:center; text-shadow:1px 1px 3px rgba(0,0,0,.3);}
+    .sidebar a{padding:12px 16px; margin-bottom:12px; border-radius:15px; background:rgba(255,255,255,.15); cursor:pointer; transition:0.3s;}
+    .sidebar a:hover, .sidebar a.active{background:rgba(255,255,255,.35); transform:scale(1.05);}
+
+    /* Main */
+    .main{flex:1; padding:35px; overflow-y:auto;}
+    h1{margin-top:0; font-family:'Inter',sans-serif;}
+
+    /* Search bar */
+    .search-bar{margin-bottom:25px; display:flex; justify-content:center;}
+    .search-bar input{padding:10px; width:50%; border-radius:15px; border:2px solid var(--brand);}
+
+    /* History cards */
+    .history-container{display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:20px;}
+    .history-card{background:#fff5e6; border-radius:20px; box-shadow:0 8px 20px rgba(0,0,0,.25); overflow:hidden; display:flex; flex-direction:column; transition: transform 0.3s, box-shadow 0.3s;}
+    .history-card:hover{transform:scale(1.05); box-shadow:0 15px 35px rgba(0,0,0,.35);}
+    .history-card img{width:120px; height:120px; object-fit:cover; border-radius:15px; align-self:center; margin-top:15px;}
+    .history-card .card-body{padding:15px; flex:1; display:flex; flex-direction:column; justify-content:space-between; text-align:center;}
+    .history-card h5{margin:10px 0;}
+    .history-card p{margin:0 0 10px 0; flex:1;}
+    .history-card a{align-self:center; padding:8px 12px; background:var(--brand); color:white; border-radius:12px; text-decoration:none; font-weight:600;}
+
+    @media (max-width:900px){body{flex-direction:column;} .sidebar{width:100%; height:auto;}}
+  </style>
+</head>
+<body>
+<div class="sidebar">
+  <h2>Nica Raíces 🇳🇮</h2>
+  <a href="index.html">Inicio</a>
+  <a href="historia.html" class="active">Historia</a>
+  <a href="comidas.html">Comidas</a>
+  <a href="departamentos.html">Departamentos</a>
+  <a href="danzas.html">Danzas y Vestuario</a>
+  <a href="calendario.html">Calendario de Actividades</a>
+  <a href="juegos.html">Juegos Interactivos</a>
+</div>
+
+<div class="main">
+  <h1>Historia de Nicaragua</h1>
+
+  <!-- Barra de búsqueda -->
+  <div class="search-bar">
+    <input type="text" id="searchInput" placeholder="Buscar evento histórico..." onkeyup="filterHistory()">
+  </div>
+
+  <div class="history-container" id="historyContainer">
+    <div class="history-card">
+      <img src="https://th.bing.com/th/id/R.e2f056ec7aa0194cae56f824f095f939?rik=yIBrM6eex4KplA&riu=http%3a%2f%2fwww.el19digital.com%2ffiles%2farticulos%2f366840.jpeg&ehk=quuXbE3OV8X%2f%2bNQghFkmYU8hyPAIfitV76Zf3qXWyu0%3d&risl=&pid=ImgRaw&r=0" alt="Fundación de Granada">
+      <div class="card-body">
+        <h5>Fundación de Granada (1524)</h5>
+        <p>Una de las primeras ciudades fundadas por los españoles en América continental.</p>
+        <a href="#">Ver más</a>
+      </div>
+    </div>
+
+    <div class="history-card">
+      <img src="https://th.bing.com/th/id/R.ff672bab474bfb667d38e10f0f78416f?rik=emJiSPPQNb3dig&riu=http%3a%2f%2fwww.biografiasyvidas.com%2fbiografia%2fw%2ffotos%2fwalker.jpg&ehk=MJITQbZwr1UqXcdTUhgfadb4sKWjwUixlNjjOf9cltE%3d&risl=&pid=ImgRaw&r=0" alt="William Walker">
+      <div class="card-body">
+        <h5>Invasión de William Walker (1856)</h5>
+        <p>El filibustero estadounidense se autoproclamó presidente hasta ser expulsado.</p>
+        <a href="#">Ver más</a>
+      </div>
+    </div>
+
+    <div class="history-card">
+      <img src="https://nuevaya.com.ni/wp-content/uploads/2021/06/el-general-augusto-c-sandino.jpeg" alt="Sandino">
+      <div class="card-body">
+        <h5>Lucha de Sandino (1927-1934)</h5>
+        <p>Sandino lideró la resistencia contra la ocupación militar estadounidense.</p>
+        <a href="#">Ver más</a>
+      </div>
+    </div>
+
+    <div class="history-card">
+      <img src="https://nicasnews.com/wp-content/uploads/1972/12/19721223-00008.jpg" alt="Terremoto de Managua">
+      <div class="card-body">
+        <h5>Terremoto de Managua (1972)</h5>
+        <p>Un sismo destruyó gran parte de la capital, dejando miles de muertos.</p>
+        <a href="#">Ver más</a>
+      </div>
+    </div>
+
+    <div class="history-card">
+      <img src="https://www.unan.edu.ni/wp-content/uploads/2019/07/revl.jpg" alt="Revolución Sandinista">
+      <div class="card-body">
+        <h5>Revolución Sandinista (1979)</h5>
+        <p>El FSLN derrocó a la dictadura de los Somoza, marcando un cambio histórico.</p>
+        <a href="#">Ver más</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+function filterHistory() {
+  const input = document.getElementById('searchInput');
+  const filter = input.value.toLowerCase();
+  const container = document.getElementById('historyContainer');
+  const cards = container.getElementsByClassName('history-card');
+
+  for (let i = 0; i < cards.length; i++) {
+    const title = cards[i].getElementsByTagName('h5')[0].textContent.toLowerCase();
+    if (title.indexOf(filter) > -1) {
+      cards[i].style.display = '';
+    } else {
+      cards[i].style.display = 'none';
+    }
+  }
+}
+</script>
+</body>
+</html>
