@@ -1,15 +1,15 @@
 const CACHE_NAME = "nica-raices-cache-v1";
 const urlsToCache = [
-  "/index.html",
-  "/comidas.html",
-  "/calendario.html",
-  "/danza.html",
-  "/historia.html",
-  "/municipios.html",
-  "/juegos.html",
-  "/style.css",
-  "/icon-192.png",
-  "/icon-512.png"
+  "index.html",
+  "comidas.html",
+  "calendario.html",
+  "danza.html",
+  "historia.html",
+  "municipios.html",
+  "juegos.html",
+  "style.css",
+  "icon-192.png",
+  "icon-512.png"
 ];
 
 self.addEventListener("install", event => {
