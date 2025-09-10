@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ahorcado Cultural - Nica Raíces</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #ffe5b4;
+      color: #2c2c2c;
+      margin: 0;
+      padding: 0;
+    }
+
+    /* Sidebar */
+    .sidebar {
+      width: 280px;
+      background: #ff6f61;
+      color: white;
+      padding: 25px;
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+      position: fixed;
+      top: 0;
+      left: 0;
+      font-weight: 600;
+      box-shadow: 2px 0 8px rgba(0,0,0,0.2);
+      z-index: 1000;
+    }
+
+    .sidebar h2 {
+      font-size: 22px;
+      margin-bottom: 25px;
+      text-align: center;
+      text-shadow: 1px 1px 3px rgba(0,0,0,.3);
+    }
+
+    .sidebar a {
+      padding: 12px 16px;
+      margin-bottom: 12px;
+      border-radius: 15px;
+      background: rgba(255,255,255,0.15);
+      cursor: pointer;
+      transition: 0.3s;
+      text-decoration: none;
+      color: white;
+    }
+
+    .sidebar a:hover, 
+    .sidebar a.active {
+      background: rgba(255,255,255,0.35);
+      transform: scale(1.05);
+    }
+
+    /* Ajuste del contenido principal */
+    .main-content {
+      margin-left: 300px;
+      padding: 20px;
+      transition: margin-left 0.3s ease;
+    }
+
+    h1 {
+      color: #ff6f61;
+    }
+
+    .game-container {
+      max-width: 700px;
+      margin: auto;
+      background: #fffbf0;
+      padding: 20px;
+      border-radius: 20px;
+      box-shadow: 0 10px 25px rgba(0,0,0,.2);
+    }
+
+    #word-display {
+      font-size: 2rem;
+      letter-spacing: 10px;
+      margin-bottom: 15px;
+    }
+
+    #letters button {
+      margin: 5px;
+      padding: 10px 15px;
+      font-size: 1rem;
+      border: none;
+      border-radius: 10px;
+      background: #ff6f61;
+      color: white;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    #letters button:hover { background: #e85a50; }
+    #letters button:disabled { background: #ccc; cursor: default; }
+
+    #wrong-letters { margin-top: 15px; color: red; }
+    #message { margin-top: 20px; font-weight: bold; font-size: 1.2rem; }
+
+    #reset-btn {
+      margin-top: 20px;
+      padding: 10px 20px;
+      font-size: 1rem;
+      border: none;
+      border-radius: 10px;
+      background: #ffb347;
+      color: white;
+      cursor: pointer;
+      display: none;
+    }
+
+    #hangman {
+      margin: 20px auto;
+      width: 150px;
+      height: 220px;
+      position: relative;
+    }
+
+    /* Partes del poste */
+    .base { width: 100px; height: 10px; bottom: 0; left: 25px; background: #333; position: absolute; }
+    .pole { width: 10px; height: 180px; bottom: 10px; left: 50px; background: #333; position: absolute; }
+    .beam { width: 70px; height: 10px; top: 0; left: 50px; background: #333; position: absolute; }
+
+    /* Soga conectada al cuello */
+    .rope { width: 2px; height: 30px; top: 10px; left: 120px; background: #333; position: absolute; }
+
+    /* Muñeco */
+    .head { width: 30px; height: 30px; border-radius: 50%; top: 40px; left: 105px; border: 3px solid #333; background: transparent; position: absolute; transition: top 0.5s ease; }
+    .body { width: 4px; height: 50px; top: 70px; left: 120px; background: #333; position: absolute; transition: top 0.5s ease; }
+    .arm-left { width: 4px; height: 30px; top: 75px; left: 120px; transform: rotate(-45deg); transform-origin: top; background: #333; position: absolute; transition: top 0.5s ease; }
+    .arm-right { width: 4px; height: 30px; top: 75px; left: 120px; transform: rotate(45deg); transform-origin: top; background: #333; position: absolute; transition: top 0.5s ease; }
+    .leg-left { width: 4px; height: 30px; top: 120px; left: 120px; transform: rotate(-45deg); transform-origin: top; background: #333; position: absolute; transition: top 0.5s ease; }
+    .leg-right { width: 4px; height: 30px; top: 120px; left: 120px; transform: rotate(45deg); transform-origin: top; background: #333; position: absolute; transition: top 0.5s ease; }
+
+    /* Animación de mostrar partes */
+    .part { display: none; transition: all 0.5s ease; }
+    .part.show { display: block; }
+
+    /* Muñeco ahorcado al perder */
+    .hanged .head { top: 55px; }
+    .hanged .body { top: 85px; }
+    .hanged .arm-left { top: 90px; }
+    .hanged .arm-right { top: 90px; }
+    .hanged .leg-left { top: 135px; }
+    .hanged .leg-right { top: 135px; }
+  </style>
+</head>
+<body>
+
+  <div class="sidebar">
+    <h2>Nica Raíces 🇳🇮</h2>
+    <a href="../index.html">Inicio</a>
+    <a href="../historia.html">Historia</a>
+    <a href="../comidas.html">Comidas</a>
+    <a href="../departamentos.html">Departamentos</a>
+    <a href="../danzas.html">Danzas y Vestuario</a>
+    <a href="../calendario.html">Calendario de Actividades</a>
+    <a href="../juegos.html" class="active">Juegos Interactivos</a>
+  </div>
+
+  <div class="main-content">
+    <h1>📝 Ahorcado Cultural Nicaragüense 📝</h1>
+    <div class="game-container">
+      <div id="hangman">
+        <div class="part base"></div>
+        <div class="part pole"></div>
+        <div class="part beam"></div>
+        <div class="part rope"></div>
+        <div class="part head"></div>
+        <div class="part body"></div>
+        <div class="part arm-left"></div>
+        <div class="part arm-right"></div>
+        <div class="part leg-left"></div>
+        <div class="part leg-right"></div>
+      </div>
+
+      <div id="word-display"></div>
+      <div id="hint"></div>
+      <div id="letters"></div>
+      <div id="wrong-letters">Letras incorrectas: </div>
+      <div id="message"></div>
+      <button id="reset-btn">Reiniciar Juego</button>
+    </div>
+  </div>
+
+  <script>
+    const rounds = [
+      { word: "GALLO PINTO", hint: "Plato típico más popular de Nicaragua" },
+      { word: "VIGORON", hint: "Plato hecho con yuca, chicharrón y ensalada" },
+      { word: "INDIO VIEJO", hint: "Plato tradicional de carne y maíz" },
+      { word: "BAHO", hint: "Plato cocido al vapor con carne y verduras" },
+      { word: "EL GÜEGÜENSE", hint: "Danza folclórica nicaragüense muy famosa" }
+    ];
+
+    let currentRound = 0;
+    let selectedWord = "";
+    let displayedWord = [];
+    let wrongLetters = [];
+    const maxErrors = 9;
+
+    const wordDisplay = document.getElementById("word-display");
+    const hintEl = document.getElementById("hint");
+    const lettersContainer = document.getElementById("letters");
+    const wrongLettersEl = document.getElementById("wrong-letters");
+    const messageEl = document.getElementById("message");
+    const resetBtn = document.getElementById("reset-btn");
+    const parts = document.querySelectorAll(".part");
+
+    function startGame() {
+      currentRound = 0;
+      resetBtn.style.display = "none";
+      document.getElementById("hangman").classList.remove("hanged");
+      nextRound();
+    }
+
+    function nextRound() {
+      if (currentRound >= rounds.length){
+        messageEl.textContent = "🎉 ¡Terminaste todas las rondas! Eres un conocedor cultural.";
+        lettersContainer.innerHTML = "";
+        resetBtn.style.display = "inline-block";
+        return;
+      }
+
+      selectedWord = rounds[currentRound].word;
+      displayedWord = selectedWord.split("").map(char => char === " " ? " " : "_");
+      wrongLetters = [];
+      updateDisplay();
+      createLetterButtons();
+      wrongLettersEl.textContent = "Letras incorrectas: ";
+      hintEl.textContent = "Pista: " + rounds[currentRound].hint;
+      messageEl.textContent = `Ronda ${currentRound + 1} de ${rounds.length}`;
+      parts.forEach(p => p.style.display = "none");
+    }
+
+    function updateDisplay() {
+      wordDisplay.textContent = displayedWord.join(" ");
+    }
+
+    function createLetterButtons() {
+      lettersContainer.innerHTML = "";
+      for(let i=65;i<=90;i++){
+        const letter = String.fromCharCode(i);
+        const btn = document.createElement("button");
+        btn.textContent = letter;
+        btn.onclick = () => guessLetter(letter, btn);
+        lettersContainer.appendChild(btn);
+      }
+    }
+
+    function guessLetter(letter, button) {
+      button.disabled = true;
+      if(selectedWord.includes(letter)){
+        selectedWord.split("").forEach((char, idx) => {
+          if(char === letter) displayedWord[idx] = letter;
+        });
+        updateDisplay();
+        checkWin();
+      } else {
+        wrongLetters.push(letter);
+        wrongLettersEl.textContent = "Letras incorrectas: " + wrongLetters.join(", ");
+        if(wrongLetters.length <= maxErrors) {
+          parts[wrongLetters.length].style.display = "block";
+        }
+        checkLose();
+      }
+    }
+
+    function checkWin() {
+      if(!displayedWord.includes("_")){
+        messageEl.textContent = `🎉 ¡Ganaste la ronda ${currentRound + 1}!`;
+        currentRound++;
+        setTimeout(nextRound, 1500);
+      }
+    }
+
+    function checkLose() {
+      if(wrongLetters.length >= maxErrors){
+        messageEl.textContent = `💀 Perdiste la ronda. La palabra era: ${selectedWord}`;
+        lettersContainer.innerHTML = "";
+        resetBtn.style.display = "inline-block";
+        parts.forEach(p => p.style.display = "block");
+        document.getElementById("hangman").classList.add("hanged");
+      }
+    }
+
+    resetBtn.addEventListener("click", startGame);
+
+    startGame();
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Trivia Cultural - Nica Raíces</title>
+  <style>
+    :root{
+      --brand:#ff6f61;
+      --bg:#ffe5b4;
+    }
+    body {
+      font-family: Arial, sans-serif;
+      background: var(--bg);
+      color: #2c2c2c;
+      margin: 0;
+      display: flex;
+    }
+
+    /* Sidebar */
+    .sidebar{
+      width:280px; 
+      background:var(--brand); 
+      color:white; 
+      padding:25px; 
+      display:flex; 
+      flex-direction:column; 
+      height:100vh; 
+      position:sticky; 
+      top:0; 
+      font-weight:600;
+    }
+    .sidebar h2{
+      font-size:22px; 
+      margin-bottom:25px; 
+      text-align:center; 
+      text-shadow:1px 1px 3px rgba(0,0,0,.3);
+    }
+    .sidebar a{
+      padding:12px 16px; 
+      margin-bottom:12px; 
+      border-radius:15px; 
+      background:rgba(255,255,255,.15); 
+      cursor:pointer; 
+      transition:0.3s;
+      text-decoration:none;
+      color:white;
+    }
+    .sidebar a:hover, .sidebar a.active{
+      background:rgba(255,255,255,.35); 
+      transform:scale(1.05);
+    }
+
+    /* Contenido principal */
+    .content {
+      flex: 1;
+      padding: 30px;
+    }
+
+    h1 {
+      color: var(--brand);
+      text-align: center;
+    }
+
+    .trivia-container {
+      max-width: 600px;
+      margin: auto;
+      background: #fffbf0;
+      padding: 20px;
+      border-radius: 20px;
+      box-shadow: 0 10px 25px rgba(0,0,0,.2);
+      text-align: center;
+    }
+    .question {
+      font-size: 1.2rem;
+      margin-bottom: 15px;
+    }
+    .options {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .options button {
+      padding: 10px;
+      border: none;
+      border-radius: 10px;
+      background: var(--brand);
+      color: white;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    .options button:hover {
+      background: #e85a50;
+    }
+    .feedback {
+      margin-top: 15px;
+      font-weight: bold;
+    }
+    #next-btn, #restart-btn {
+      margin-top: 20px;
+      padding: 10px 20px;
+      font-size: 1rem;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      display: none;
+      color: white;
+    }
+    #next-btn {
+      background: #ffb347;
+    }
+    #restart-btn {
+      background: #6a994e;
+    }
+    #score {
+      margin-top: 20px;
+      font-size: 1.2rem;
+      color: #444;
+      white-space: pre-line; /* Para saltos de línea */
+    }
+  </style>
+</head>
+<body>
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <h2>Nica Raíces 🇳🇮</h2>
+    <a href="../index.html">Inicio</a>
+    <a href="../historia.html">Historia</a>
+    <a href="../comidas.html">Comidas</a>
+    <a href="../departamentos.html">Departamentos</a>
+    <a href="../danzas.html">Danzas y Vestuario</a>
+    <a href="../calendario.html">Calendario de Actividades</a>
+    <a href="../juegos.html" class="active">Juegos Interactivos</a>
+  </div>
+
+  <!-- Contenido -->
+  <div class="content">
+    <h1>🎉 Trivia Cultural Nicaragüense 🎉</h1>
+    <div class="trivia-container">
+      <div id="question-container">
+        <p id="question" class="question"></p>
+        <div id="options" class="options"></div>
+        <p id="feedback" class="feedback"></p>
+        <button id="next-btn">Siguiente</button>
+        <button id="restart-btn">Reiniciar Juego</button>
+      </div>
+      <div id="score"></div>
+    </div>
+  </div>
+
+  <script>
+    const questions = [
+      {question:"¿Cuál es el plato típico más representativo de Nicaragua?",options:["Gallo Pinto","Vigorón","Indio Viejo","Baho"],answer:"Gallo Pinto"},
+      {question:"¿Qué ciudad es conocida como 'La Novia del Xolotlán'?",options:["Granada","León","Managua","Masaya"],answer:"Managua"},
+      {question:"¿Cuál es el volcán más alto de Nicaragua?",options:["Volcán Masaya","Volcán San Cristóbal","Volcán Concepción","Volcán Mombacho"],answer:"Volcán San Cristóbal"},
+      {question:"¿Qué fiesta popular es famosa en Masaya?",options:["La Gritería","El Tope de los Santos","El Toro Venado","Fiestas de la Purísima"],answer:"El Toro Venado"},
+      {question:"¿Cuál es el lago más grande de Nicaragua?",options:["Lago Xolotlán","Lago de Apanás","Lago Cocibolca","Laguna de Tiscapa"],answer:"Lago Cocibolca"},
+      {question:"¿Qué poeta nicaragüense es conocido como el 'Príncipe de las Letras Castellanas'?",options:["Pablo Antonio Cuadra","Carlos Martínez Rivas","Rubén Darío","Ernesto Cardenal"],answer:"Rubén Darío"},
+      {question:"¿En qué ciudad se celebran las fiestas patronales en honor a Santo Domingo de Guzmán?",options:["Granada","León","Masaya","Managua"],answer:"Managua"},
+      {question:"¿Cuál es el deporte más practicado en Nicaragua?",options:["Fútbol","Béisbol","Boxeo","Baloncesto"],answer:"Béisbol"},
+      {question:"¿Qué aparece en el escudo de Nicaragua?",options:["Un león","Un quetzal","Un águila","Un arco iris"],answer:"Un arco iris"},
+      {question:"¿Cómo se llama la danza folclórica más popular de Nicaragua?",options:["La Yegüita","El Güegüense","El Toro Huaco","La Gigantona"],answer:"El Güegüense"}
+    ];
+
+    let currentQuestion = 0;
+    let score = 0;
+    let shuffledQuestions = [];
+
+    const questionEl = document.getElementById("question");
+    const optionsEl = document.getElementById("options");
+    const feedbackEl = document.getElementById("feedback");
+    const nextBtn = document.getElementById("next-btn");
+    const restartBtn = document.getElementById("restart-btn");
+    const scoreEl = document.getElementById("score");
+
+    function shuffleArray(array) {
+      return array.sort(() => Math.random() - 0.5);
+    }
+
+    function startGame() {
+      shuffledQuestions = shuffleArray([...questions]);
+      currentQuestion = 0;
+      score = 0;
+      scoreEl.textContent = "";
+      restartBtn.style.display = "none";
+      showQuestion();
+    }
+
+    function showQuestion() {
+      const q = shuffledQuestions[currentQuestion];
+      questionEl.textContent = q.question;
+      optionsEl.innerHTML = "";
+      feedbackEl.textContent = "";
+      nextBtn.style.display = "none";
+
+      shuffleArray(q.options).forEach(option => {
+        const btn = document.createElement("button");
+        btn.textContent = option;
+        btn.onclick = () => checkAnswer(option);
+        optionsEl.appendChild(btn);
+      });
+    }
+
+    function checkAnswer(selected) {
+      const q = shuffledQuestions[currentQuestion];
+      if (selected === q.answer) {
+        feedbackEl.textContent = "✅ ¡Correcto!";
+        feedbackEl.style.color = "green";
+        score++;
+      } else {
+        feedbackEl.textContent = "❌ Incorrecto. Respuesta correcta: " + q.answer;
+        feedbackEl.style.color = "red";
+      }
+      Array.from(optionsEl.children).forEach(btn => btn.disabled = true);
+      nextBtn.style.display = "inline-block";
+    }
+
+    nextBtn.addEventListener("click", () => {
+      currentQuestion++;
+      if (currentQuestion < shuffledQuestions.length) {
+        showQuestion();
+      } else {
+        showScore();
+      }
+    });
+
+    function showScore() {
+      questionEl.textContent = "Juego Terminado 🎉";
+      optionsEl.innerHTML = "";
+      feedbackEl.textContent = "";
+      nextBtn.style.display = "none";
+
+      let mensaje = "";
+      if (score <= 3) {
+        mensaje = "🇨🇷 Sos más tico que nica ";
+      } else if (score <= 6) {
+        mensaje = "🇳🇮 Nicaragüense promedio ";
+      } else if (score <= 9) {
+        mensaje = " Nica conocedor, ¡orgullo patrio!";
+      } else {
+        mensaje = " Nica de corazón ❤️";
+      }
+
+      scoreEl.textContent = `Tu puntuación: ${score} de ${shuffledQuestions.length}\n${mensaje}`;
+      restartBtn.style.display = "inline-block";
+    }
+
+    restartBtn.addEventListener("click", startGame);
+
+    startGame();
+  </script>
+</body>
+</html>
