@@ -5,120 +5,127 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Trivia Cultural - Nica Raíces</title>
   <style>
-    :root{
-      --brand:#ff6f61;
-      --bg:#ffe5b4;
-    }
-    body {
-      font-family: Arial, sans-serif;
-      background: var(--bg);
-      color: #2c2c2c;
-      margin: 0;
-      display: flex;
-    }
+   :root{
+  --color1:#DA3129; /* rojo */
+  --color2:#F27A34; /* naranja */
+  --color3:#FBBF31; /* amarillo */
+  --bg:#ffe5b4;
+  --card:#fffbf0;
+  --text:#2c2c2c;
+}
 
-    /* Sidebar */
-    .sidebar{
-      width:280px; 
-      background:var(--brand); 
-      color:white; 
-      padding:25px; 
-      display:flex; 
-      flex-direction:column; 
-      height:100vh; 
-      position:sticky; 
-      top:0; 
-      font-weight:600;
-    }
-    .sidebar h2{
-      font-size:22px; 
-      margin-bottom:25px; 
-      text-align:center; 
-      text-shadow:1px 1px 3px rgba(0,0,0,.3);
-    }
-    .sidebar a{
-      padding:12px 16px; 
-      margin-bottom:12px; 
-      border-radius:15px; 
-      background:rgba(255,255,255,.15); 
-      cursor:pointer; 
-      transition:0.3s;
-      text-decoration:none;
-      color:white;
-    }
-    .sidebar a:hover, .sidebar a.active{
-      background:rgba(255,255,255,.35); 
-      transform:scale(1.05);
-    }
+body {
+  font-family: Arial, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  margin: 0;
+  display: flex;
+}
 
-    /* Contenido principal */
-    .content {
-      flex: 1;
-      padding: 30px;
-    }
+/* Sidebar */
+.sidebar{
+  width:280px; 
+  background:var(--color1); 
+  color:white; 
+  padding:25px; 
+  display:flex; 
+  flex-direction:column; 
+  height:100vh; 
+  position:sticky; 
+  top:0; 
+  font-weight:600;
+}
+.sidebar h2{
+  font-size:22px; 
+  margin-bottom:25px; 
+  text-align:center; 
+  text-shadow:1px 1px 3px rgba(0,0,0,.3);
+}
+.sidebar a{
+  padding:12px 16px; 
+  margin-bottom:12px; 
+  border-radius:15px; 
+  background:rgba(255,255,255,.15); 
+  cursor:pointer; 
+  transition:0.3s;
+  text-decoration:none;
+  color:white;
+}
+.sidebar a:hover, .sidebar a.active{
+  background:rgba(255,255,255,.35); 
+  transform:scale(1.05);
+}
 
-    h1 {
-      color: var(--brand);
-      text-align: center;
-    }
+/* Contenido principal */
+.content {
+  flex: 1;
+  padding: 30px;
+}
 
-    .trivia-container {
-      max-width: 600px;
-      margin: auto;
-      background: #fffbf0;
-      padding: 20px;
-      border-radius: 20px;
-      box-shadow: 0 10px 25px rgba(0,0,0,.2);
-      text-align: center;
-    }
-    .question {
-      font-size: 1.2rem;
-      margin-bottom: 15px;
-    }
-    .options {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
-    .options button {
-      padding: 10px;
-      border: none;
-      border-radius: 10px;
-      background: var(--brand);
-      color: white;
-      font-size: 1rem;
-      cursor: pointer;
-      transition: background 0.3s;
-    }
-    .options button:hover {
-      background: #e85a50;
-    }
-    .feedback {
-      margin-top: 15px;
-      font-weight: bold;
-    }
-    #next-btn, #restart-btn {
-      margin-top: 20px;
-      padding: 10px 20px;
-      font-size: 1rem;
-      border: none;
-      border-radius: 10px;
-      cursor: pointer;
-      display: none;
-      color: white;
-    }
-    #next-btn {
-      background: #ffb347;
-    }
-    #restart-btn {
-      background: #6a994e;
-    }
-    #score {
-      margin-top: 20px;
-      font-size: 1.2rem;
-      color: #444;
-      white-space: pre-line; /* Para saltos de línea */
-    }
+h1 {
+  color: var(--color1);
+  text-align: center;
+}
+
+.trivia-container {
+  max-width: 600px;
+  margin: auto;
+  background: var(--card);
+  padding: 20px;
+  border-radius: 20px;
+  box-shadow: 0 10px 25px rgba(0,0,0,.2);
+  text-align: center;
+}
+.question {
+  font-size: 1.2rem;
+  margin-bottom: 15px;
+}
+.options {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.options button {
+  padding: 10px;
+  border: none;
+  border-radius: 10px;
+  background: var(--color2);
+  color: white;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+.options button:hover {
+  background: var(--color3);
+}
+.feedback {
+  margin-top: 15px;
+  font-weight: bold;
+}
+#next-btn, #restart-btn {
+  margin-top: 20px;
+  padding: 10px 20px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  display: none;
+  color: white;
+}
+#next-btn {
+  background: var(--color2);
+}
+#restart-btn {
+  background: var(--color3);
+  color: #2c2c2c; /* contraste sobre amarillo */
+}
+#score {
+  margin-top: 20px;
+  font-size: 1.2rem;
+  color: #444;
+  white-space: pre-line; /* Para saltos de línea */
+}
+
   </style>
 </head>
 <body>

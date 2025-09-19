@@ -5,145 +5,174 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Ahorcado Cultural - Nica Raíces</title>
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      background: #ffe5b4;
-      color: #2c2c2c;
-      margin: 0;
-      padding: 0;
-    }
+   /* 🎨 Paleta */
+:root {
+  --brand:hsl(5, 81%, 54%);   /* principal */
+  --accent:#ffb347;  /* botones secundarios */
+  --correct:#6a994e; /* verde correcto */
+  --wrong:#DA3129;   /* rojo error */
+  --bg:#ffe5b4;      /* fondo */
+  --light:#fffbf0;   /* caja */
+  --text:#2c2c2c;    /* texto */
+  --dark:#333;       /* negro poste/muñeco */
+}
 
-    /* Sidebar */
-    .sidebar {
-      width: 280px;
-      background: #ff6f61;
-      color: white;
-      padding: 25px;
-      display: flex;
-      flex-direction: column;
-      height: 100vh;
-      position: fixed;
-      top: 0;
-      left: 0;
-      font-weight: 600;
-      box-shadow: 2px 0 8px rgba(0,0,0,0.2);
-      z-index: 1000;
-    }
+body {
+  font-family: Arial, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  margin: 0;
+  padding: 0;
+}
 
-    .sidebar h2 {
-      font-size: 22px;
-      margin-bottom: 25px;
-      text-align: center;
-      text-shadow: 1px 1px 3px rgba(0,0,0,.3);
-    }
+/* 🟥 Sidebar */
+.sidebar {
+  width: 280px;
+  background: var(--brand);
+  color: white;
+  padding: 25px;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  font-weight: 600;
+  box-shadow: 2px 0 8px rgba(0,0,0,0.2);
+  z-index: 1000;
+}
 
-    .sidebar a {
-      padding: 12px 16px;
-      margin-bottom: 12px;
-      border-radius: 15px;
-      background: rgba(255,255,255,0.15);
-      cursor: pointer;
-      transition: 0.3s;
-      text-decoration: none;
-      color: white;
-    }
+.sidebar h2 {
+  font-size: 22px;
+  margin-bottom: 25px;
+  text-align: center;
+  text-shadow: 1px 1px 3px rgba(0,0,0,.3);
+}
 
-    .sidebar a:hover, 
-    .sidebar a.active {
-      background: rgba(255,255,255,0.35);
-      transform: scale(1.05);
-    }
+.sidebar a {
+  padding: 12px 16px;
+  margin-bottom: 12px;
+  border-radius: 15px;
+  background: rgba(255,255,255,0.15);
+  cursor: pointer;
+  transition: 0.3s;
+  text-decoration: none;
+  color: white;
+}
+.sidebar a:hover, 
+.sidebar a.active {
+  background: rgba(255,255,255,0.35);
+  transform: scale(1.05);
+}
 
-    /* Ajuste del contenido principal */
-    .main-content {
-      margin-left: 300px;
-      padding: 20px;
-      transition: margin-left 0.3s ease;
-    }
+/* 📦 Contenido principal */
+.main-content {
+  margin-left: 300px;
+  padding: 20px;
+  transition: margin-left 0.3s ease;
+}
+h1 { color: var(--brand); }
 
-    h1 {
-      color: #ff6f61;
-    }
+/* 🎲 Caja de juego */
+.game-container {
+  max-width: 700px;
+  margin: auto;
+  background: var(--light);
+  padding: 20px;
+  border-radius: 20px;
+  box-shadow: 0 10px 25px rgba(0,0,0,.2);
+}
 
-    .game-container {
-      max-width: 700px;
-      margin: auto;
-      background: #fffbf0;
-      padding: 20px;
-      border-radius: 20px;
-      box-shadow: 0 10px 25px rgba(0,0,0,.2);
-    }
+/* Palabra */
+#word-display {
+  font-size: 2rem;
+  letter-spacing: 10px;
+  margin-bottom: 15px;
+  color: var(--brand);
+}
 
-    #word-display {
-      font-size: 2rem;
-      letter-spacing: 10px;
-      margin-bottom: 15px;
-    }
+/* 🔤 Botones de letras */
+#letters button {
+  margin: 5px;
+  padding: 10px 15px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 10px;
+  background: var(--brand);
+  color: white;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.2s;
+}
+#letters button:hover { background: #e85a50; transform: scale(1.05); }
+#letters button:disabled { background: #ccc; cursor: default; }
 
-    #letters button {
-      margin: 5px;
-      padding: 10px 15px;
-      font-size: 1rem;
-      border: none;
-      border-radius: 10px;
-      background: #ff6f61;
-      color: white;
-      cursor: pointer;
-      transition: background 0.3s;
-    }
+#letters button.correct { background: var(--correct); }
+#letters button.wrong { background: var(--wrong); }
 
-    #letters button:hover { background: #e85a50; }
-    #letters button:disabled { background: #ccc; cursor: default; }
+/* 📢 Mensajes */
+#wrong-letters { margin-top: 15px; color: var(--wrong); }
+#message { margin-top: 20px; font-weight: bold; font-size: 1.2rem; color: var(--brand); }
 
-    #wrong-letters { margin-top: 15px; color: red; }
-    #message { margin-top: 20px; font-weight: bold; font-size: 1.2rem; }
+/* 🔄 Botón reset */
+#reset-btn {
+  margin-top: 20px;
+  padding: 10px 20px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 10px;
+  background: var(--accent);
+  color: white;
+  cursor: pointer;
+  display: none;
+}
+#reset-btn:hover { background: #e69c2c; }
 
-    #reset-btn {
-      margin-top: 20px;
-      padding: 10px 20px;
-      font-size: 1rem;
-      border: none;
-      border-radius: 10px;
-      background: #ffb347;
-      color: white;
-      cursor: pointer;
-      display: none;
-    }
+/* ⚖️ Hangman */
+#hangman {
+  margin: 20px auto;
+  width: 150px;
+  height: 220px;
+  position: relative;
+}
 
-    #hangman {
-      margin: 20px auto;
-      width: 150px;
-      height: 220px;
-      position: relative;
-    }
+/* Poste */
+.base, .pole, .beam, .rope {
+  position: absolute;
+  background: var(--dark);
+}
+.base { width: 100px; height: 10px; bottom: 0; left: 25px; }
+.pole { width: 10px; height: 180px; bottom: 10px; left: 50px; }
+.beam { width: 70px; height: 10px; top: 0; left: 50px; }
+.rope { width: 2px; height: 30px; top: 10px; left: 120px; }
 
-    /* Partes del poste */
-    .base { width: 100px; height: 10px; bottom: 0; left: 25px; background: #333; position: absolute; }
-    .pole { width: 10px; height: 180px; bottom: 10px; left: 50px; background: #333; position: absolute; }
-    .beam { width: 70px; height: 10px; top: 0; left: 50px; background: #333; position: absolute; }
+/* Muñeco */
+.part { display: none; transition: all 0.5s ease; }
+.head, .body, .arm-left, .arm-right, .leg-left, .leg-right { position: absolute; background: var(--dark); }
+.head { width: 30px; height: 30px; border-radius: 50%; top: 40px; left: 105px; border: 3px solid var(--dark); background: transparent; }
+.body { width: 4px; height: 50px; top: 70px; left: 120px; }
+.arm-left { width: 4px; height: 30px; top: 75px; left: 120px; transform: rotate(-45deg); transform-origin: top; }
+.arm-right { width: 4px; height: 30px; top: 75px; left: 120px; transform: rotate(45deg); transform-origin: top; }
+.leg-left { width: 4px; height: 30px; top: 120px; left: 120px; transform: rotate(-45deg); transform-origin: top; }
+.leg-right { width: 4px; height: 30px; top: 120px; left: 120px; transform: rotate(45deg); transform-origin: top; }
 
-    /* Soga conectada al cuello */
-    .rope { width: 2px; height: 30px; top: 10px; left: 120px; background: #333; position: absolute; }
+/* Animación de mostrar partes */
+.part.show { display: block; }
 
-    /* Muñeco */
-    .head { width: 30px; height: 30px; border-radius: 50%; top: 40px; left: 105px; border: 3px solid #333; background: transparent; position: absolute; transition: top 0.5s ease; }
-    .body { width: 4px; height: 50px; top: 70px; left: 120px; background: #333; position: absolute; transition: top 0.5s ease; }
-    .arm-left { width: 4px; height: 30px; top: 75px; left: 120px; transform: rotate(-45deg); transform-origin: top; background: #333; position: absolute; transition: top 0.5s ease; }
-    .arm-right { width: 4px; height: 30px; top: 75px; left: 120px; transform: rotate(45deg); transform-origin: top; background: #333; position: absolute; transition: top 0.5s ease; }
-    .leg-left { width: 4px; height: 30px; top: 120px; left: 120px; transform: rotate(-45deg); transform-origin: top; background: #333; position: absolute; transition: top 0.5s ease; }
-    .leg-right { width: 4px; height: 30px; top: 120px; left: 120px; transform: rotate(45deg); transform-origin: top; background: #333; position: absolute; transition: top 0.5s ease; }
+/* Al perder */
+.hanged .head { top: 55px; }
+.hanged .body { top: 85px; }
+.hanged .arm-left { top: 90px; }
+.hanged .arm-right { top: 90px; }
+.hanged .leg-left { top: 135px; }
+.hanged .leg-right { top: 135px; }
 
-    /* Animación de mostrar partes */
-    .part { display: none; transition: all 0.5s ease; }
-    .part.show { display: block; }
+/* 📱 Responsive */
+@media (max-width:900px){
+  body { flex-direction: column; }
+  .sidebar { width: 100%; height: auto; position: relative; }
+  .main-content { margin-left: 0; }
+}
 
-    /* Muñeco ahorcado al perder */
-    .hanged .head { top: 55px; }
-    .hanged .body { top: 85px; }
-    .hanged .arm-left { top: 90px; }
-    .hanged .arm-right { top: 90px; }
-    .hanged .leg-left { top: 135px; }
-    .hanged .leg-right { top: 135px; }
   </style>
 </head>
 <body>
