@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gallopinto - Nica Raíces</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --color1: #DA3129; /* rojo intenso */
+  --color2: #F27A34; /* naranja */
+  --color3: #FBBF31; /* amarillo */
+  --bg:#ffe5b4;
+  --card:#fffbf0;
+  --muted:#555;
+  --text:#2c2c2c;
+  --radius:20px;
+  --shadow:0 15px 40px rgba(0,0,0,.3);
+  --nica-blue:#0057b7;
+  --nica-white:#fff;
+  --nica-light-blue:#00aaff;
+}
+
+*{box-sizing:border-box;}
+body{margin:0; font-family:Inter,sans-serif; background:var(--bg); color:var(--text);}
+a{text-decoration:none; color:var(--nica-blue);}
+a:hover{text-decoration:underline;}
+
+/* Header */
+header{background:var(--color1); color:white; padding:20px; text-align:center; font-weight:800; font-size:24px; text-shadow:1px 1px 3px rgba(0,0,0,.3);}
+
+/* Contenedor */
+.container{max-width:1200px; margin:20px auto; padding:0 20px;}
+
+/* Secciones estilo Wikipedia */
+section{background:var(--card); padding:20px; border-radius:var(--radius); box-shadow:var(--shadow); margin-bottom:25px;}
+h2{color:var(--color1); margin-top:0;}
+h3{color:var(--color2); margin-top:0;}
+p{line-height:1.6;}
+.muted{color:var(--muted); font-style:italic;}
+
+/* Galería */
+.gallery{display:flex; flex-wrap:wrap; gap:15px; margin-top:15px;}
+.gallery img{width:100%; max-width:300px; border-radius:var(--radius); border:3px solid var(--color3);}
+
+/* Footer */
+footer{text-align:center; margin:25px 0; color:var(--muted);}
+</style>
+</head>
+<body>
+
+<header>Gallopinto - Nica Raíces</header>
+
+<div class="container">
+
+  <section id="origen">
+    <h2>Origen e Historia</h2>
+    <p>El <strong>gallopinto</strong> es un plato tradicional de Nicaragua y Costa Rica, que combina arroz y frijoles. Su nombre proviene de la mezcla de colores, que recuerdan al pelaje de un gallo. Es un plato fundamental en la dieta nicaragüense, consumido especialmente en el desayuno.</p>
+    <p class="muted">Este plato refleja la fusión de influencias indígenas y españolas, adaptado a lo largo de los siglos con ingredientes locales.</p>
+  </section>
+
+  <section id="ingredientes">
+    <h2>Ingredientes</h2>
+    <ul>
+      <li>1 taza de arroz cocido</li>
+      <li>1 taza de frijoles cocidos (preferiblemente negros o rojos)</li>
+      <li>1/2 cebolla finamente picada</li>
+      <li>1/2 pimiento verde picado</li>
+      <li>2 cucharadas de aceite o manteca</li>
+      <li>Sal al gusto</li>
+      <li>Opcional: ajo, salsa Lizano (en Costa Rica)</li>
+    </ul>
+  </section>
+
+  <section id="preparacion">
+    <h2>Preparación</h2>
+    <ol>
+      <li>Calienta el aceite en un sartén y sofríe la cebolla, el pimiento y el ajo hasta que estén transparentes.</li>
+      <li>Agrega los frijoles cocidos y mezcla bien, incorporando un poco de su caldo para humedecer.</li>
+      <li>Agrega el arroz cocido y mezcla hasta que todo esté bien integrado.</li>
+      <li>Sazona con sal al gusto y cocina a fuego bajo por 5 minutos más.</li>
+      <li>Sirve caliente, acompañado de huevos, queso o crema si lo deseas.</li>
+    </ol>
+  </section>
+
+  <section id="galeria">
+    <h2>Galería de Imágenes</h2>
+    <div class="gallery">
+      <img src="https://tse3.mm.bing.net/th/id/OIP.oFKusb6yBYGuRPWWMg7aIgHaE8?rs=1&pid=ImgDetMain&o=7&rm=3" alt="Gallopinto nicaragüense">
+      <img src="https://www.expertreviewsbestricecooker.com/wp-content/uploads/2023/11/gallo-pinto-recipe.png" alt="Gallopinto ">
+      <img src="https://edgerockwealth.com/wp-content/uploads/2021/08/rnb.png" alt=" gallopinto">
+    </div>
+  </section>
+
+</div>
+
+<footer>© 2025 YAMMIAPP</footer>
+
+</body>
+</html>

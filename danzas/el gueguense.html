@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>El Güegüense - Nica Cultura</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --color1: #DA3129; /* rojo intenso */
+  --color2: #F27A34; /* naranja */
+  --color3: #FBBF31; /* amarillo */
+  --bg:#ffe5b4;
+  --card:#fffbf0;
+  --muted:#555;
+  --text:#2c2c2c;
+  --radius:20px;
+  --shadow:0 15px 40px rgba(0,0,0,.3);
+  --nica-blue:#0057b7;
+}
+
+*{box-sizing:border-box;}
+body{margin:0; font-family:Inter,sans-serif; background:var(--bg); color:var(--text);}
+a{text-decoration:none; color:var(--nica-blue);}
+a:hover{text-decoration:underline;}
+
+/* Header */
+header{background:var(--color1); color:white; padding:20px; text-align:center; font-weight:800; font-size:24px; text-shadow:1px 1px 3px rgba(0,0,0,.3);}
+
+/* Contenedor */
+.container{max-width:1200px; margin:20px auto; padding:0 20px;}
+
+/* Secciones estilo Wikipedia */
+section{background:var(--card); padding:20px; border-radius:var(--radius); box-shadow:var(--shadow); margin-bottom:25px;}
+h2{color:var(--color1); margin-top:0;}
+h3{color:var(--color2); margin-top:0;}
+p{line-height:1.6;}
+.muted{color:var(--muted); font-style:italic;}
+
+/* Galería */
+.gallery{display:flex; flex-wrap:wrap; gap:15px; margin-top:15px; justify-content:center;}
+.gallery img{width:100%; max-width:280px; border-radius:var(--radius); border:3px solid var(--color3);}
+
+/* Footer */
+footer{text-align:center; margin:25px 0; color:var(--muted);}
+</style>
+</head>
+<body>
+
+<header>El Güegüense - Patrimonio Cultural de Nicaragua</header>
+
+<div class="container">
+
+  <section id="historia">
+    <h2>Historia</h2>
+    <p><strong>El Güegüense o Macho Ratón</strong> es una obra teatral y danza satírica originaria de Nicaragua, considerada una de las expresiones culturales más antiguas de América Latina. Se remonta al siglo XVII, durante la época colonial española.</p>
+    <p>La obra mezcla teatro, danza y música, y fue utilizada por los pueblos indígenas para burlarse de las autoridades coloniales españolas a través de la sátira y el humor.</p>
+    <p class="muted">En 2005 fue declarado <strong>Patrimonio Oral e Intangible de la Humanidad</strong> por la UNESCO.</p>
+  </section>
+
+  <section id="significado">
+    <h2>Significado del Baile</h2>
+    <p>El baile del Güegüense simboliza la resistencia cultural y la astucia del pueblo nicaragüense frente al dominio colonial. El personaje principal, el Güegüense, representa a un comerciante mestizo que, con humor e ingenio, engaña y ridiculiza a los colonizadores.</p>
+    <p>La danza combina elementos indígenas y españoles, reflejando el mestizaje cultural y la capacidad del pueblo de mantener su identidad pese a la opresión.</p>
+  </section>
+
+  <section id="vestuario">
+    <h2>Vestuario</h2>
+    <p>Los trajes utilizados en el Güegüense son coloridos y simbólicos, representando tanto a los personajes españoles como a los indígenas:</p>
+    <ul>
+      <li><strong>Máscaras:</strong> Representan rostros europeos exagerados, con rasgos cómicos y grotescos.</li>
+      <li><strong>Sombreros:</strong> Decorados con plumas y espejos, simbolizan estatus y sátira hacia la nobleza española.</li>
+      <li><strong>Trajes coloridos:</strong> Con cintas, bordados y adornos brillantes que refuerzan el carácter festivo.</li>
+      <li><strong>Instrumentos musicales:</strong> Incluyen guitarras, tambores y flautas tradicionales.</li>
+    </ul>
+    <p>Este vestuario es una mezcla de elementos indígenas y europeos, lo que refuerza la naturaleza híbrida y burlesca de la obra.</p>
+  </section>
+
+  <section id="galeria">
+    <h2>Galería de Imágenes</h2>
+    <div class="gallery">
+      <img src="https://th.bing.com/th/id/R.1e11b68e7a952413f3a2a8af72bae5c3?rik=3DKcdT0LlBZiKw&riu=http%3a%2f%2fwww.el19digital.com%2ffiles%2farticulos%2f256966.jpg&ehk=0JLffxebqpm39kEUHEU4MnljaJR1ZBh2SgU%2b4WRtSSU%3d&risl=&pid=ImgRaw&r=0" alt="Baile del Güegüense en Diriamba">
+      <img src="https://ich.unesco.org/img/photo/thumb/11216-BIG.jpg" alt="Máscara del Güegüense">
+      <img src="https://i.pinimg.com/originals/f7/42/be/f742be8b2943a545b6105111e33c2563.jpg" alt="Danzantes del Güegüense">
+      <img src="https://ich.unesco.org/img/photo/thumb/00206-BIG.jpg" alt="Representación cultural del Güegüense">
+    </div>
+  </section>
+
+</div>
+
+<footer>© 2025 YAMMIAPP</footer>
+
+</body>
+</html>

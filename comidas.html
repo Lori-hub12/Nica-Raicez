@@ -9,153 +9,157 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
   <style>
     :root{
-  /* Nueva paleta de colores */
-  --color1: #DA3129; /* rojo intenso */
-  --color2: #F27A34; /* naranja */
-  --color3: #FBBF31; /* amarillo */
-  --bg:#ffe5b4;
-  --card:#fffbf0;
-  --muted:#555;
-  --text:#2c2c2c;
-  --radius:20px;
-  --shadow:0 15px 40px rgba(0,0,0,.3);
-}
+      --color1: #DA3129; /* rojo intenso */
+      --color2: #F27A34; /* naranja */
+      --color3: #FBBF31; /* amarillo */
+      --bg:#ffe5b4;
+      --card:#fffbf0;
+      --muted:#555;
+      --text:#2c2c2c;
+      --radius:20px;
+      --shadow:0 15px 40px rgba(0,0,0,.3);
+    }
 
-*{box-sizing:border-box;}
-html,body{
-  height:100%; 
-  margin:0; 
-  font-family:Inter,system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif; 
-  background: var(--bg); 
-  color:var(--text);
-}
-a{text-decoration:none; color:inherit;}
-body{display:flex;}
+    *{box-sizing:border-box;}
+    html,body{
+      height:100%; 
+      margin:0; 
+      font-family:Inter,system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif; 
+      background: var(--bg); 
+      color:var(--text);
+    }
+    a{text-decoration:none; color:inherit;}
+    body{display:flex;}
 
-/* Sidebar */
-.sidebar{
-  width:280px; 
-  background:var(--color1); /* reemplazado --brand */
-  color:white; 
-  padding:25px; 
-  display:flex; 
-  flex-direction:column; 
-  height:100vh; 
-  position:sticky; 
-  top:0; 
-  font-weight:600;
-}
-.sidebar h2{
-  font-size:22px; 
-  margin-bottom:25px; 
-  text-align:center; 
-  text-shadow:1px 1px 3px rgba(0,0,0,.3);
-}
-.sidebar a{
-  padding:12px 16px; 
-  margin-bottom:12px; 
-  border-radius:15px; 
-  background:rgba(255,255,255,.15); 
-  cursor:pointer; 
-  transition:0.3s;
-}
-.sidebar a:hover, .sidebar a.active{
-  background:rgba(255,255,255,.35); 
-  transform:scale(1.05);
-}
+    /* Sidebar */
+    .sidebar{
+      width:280px; 
+      background:var(--color1); 
+      color:white; 
+      padding:25px; 
+      display:flex; 
+      flex-direction:column; 
+      height:100vh; 
+      position:sticky; 
+      top:0; 
+      font-weight:600;
+    }
+    .sidebar h2{
+      font-size:22px; 
+      margin-bottom:25px; 
+      text-align:center; 
+      text-shadow:1px 1px 3px rgba(0,0,0,.3);
+    }
+    .sidebar a{
+      padding:12px 16px; 
+      margin-bottom:12px; 
+      border-radius:15px; 
+      background:rgba(255,255,255,.15); 
+      cursor:pointer; 
+      transition:0.3s;
+    }
+    .sidebar a:hover, .sidebar a.active{
+      background:rgba(255,255,255,.35); 
+      transform:scale(1.05);
+    }
 
-/* Main content */
-.main{
-  flex:1; 
-  padding:35px; 
-  overflow-y:auto;
-}
-.card{
-  background:var(--card); 
-  border-radius:var(--radius); 
-  box-shadow:var(--shadow); 
-  padding:15px; 
-  margin-bottom:25px; 
-  border-left:8px solid var(--color1); /* reemplazado --brand */
-}
+    /* Main content */
+    .main{
+      flex:1; 
+      padding:35px; 
+      overflow-y:auto;
+    }
+    h1,h2,h3{margin-top:0; font-family:'Inter',sans-serif;}
+    .muted{color:var(--muted); font-style:italic;}
 
-/* Colores de los 3 primeros cards */
-.main .card:nth-child(1){border-left:8px solid var(--color1);}
-.main .card:nth-child(2){border-left:8px solid var(--color2);}
-.main .card:nth-child(3){border-left:8px solid var(--color3);}
+    /* Search bar */
+    .search-bar{
+      margin-bottom:15px; 
+      display:flex; 
+      justify-content:center;
+    }
+    .search-bar input{
+      padding:10px; 
+      width:50%; 
+      border-radius:15px; 
+      border:2px solid var(--color1);
+    }
 
-h1,h2,h3{margin-top:0; font-family:'Inter',sans-serif;}
-.muted{color:var(--muted); font-style:italic;}
+    /* Filter bar */
+    .filter-bar{
+      text-align:center;
+      margin-bottom:25px;
+    }
+    .filter-bar button{
+      padding:8px 15px;
+      margin:0 5px;
+      border:none;
+      border-radius:15px;
+      cursor:pointer;
+      background:var(--color2);
+      color:white;
+      font-weight:600;
+      transition:0.3s;
+    }
+    .filter-bar button.active, .filter-bar button:hover{
+      background:var(--color1);
+    }
 
-/* Search bar */
-.search-bar{
-  margin-bottom:25px; 
-  display:flex; 
-  justify-content:center;
-}
-.search-bar input{
-  padding:10px; 
-  width:50%; 
-  border-radius:15px; 
-  border:2px solid var(--color1); /* reemplazado --brand */
-}
+    /* Cards de comida/bebida/postre */
+    .food-container{
+      display:grid; 
+      grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); 
+      gap:20px;
+    }
+    .food-card{
+      background:#fff5e6; 
+      border-radius:20px; 
+      box-shadow:0 8px 20px rgba(0,0,0,.25); 
+      overflow:hidden; 
+      display:flex; 
+      flex-direction:column; 
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .food-card:hover{
+      transform:scale(1.05); 
+      box-shadow:0 15px 35px rgba(0,0,0,.35);
+    }
+    .food-card img{
+      width:200px; 
+      height:200px; 
+      object-fit:cover; 
+      border-radius:20px; 
+      align-self:center; 
+      margin-top:15px;
+    }
+    .food-card .card-body{
+      padding:15px; 
+      flex:1; 
+      display:flex; 
+      flex-direction:column; 
+      justify-content:space-between;
+    }
+    .food-card h5{margin:0 0 10px 0;}
+    .food-card p{margin:0 0 10px 0; flex:1;}
+    .food-card a{
+      align-self:flex-start; 
+      padding:8px 12px; 
+      background:var(--color1);
+      color:white; 
+      border-radius:12px; 
+      text-decoration:none; 
+      font-weight:600;
+    }
 
-/* Cards de comida */
-.food-container{
-  display:grid; 
-  grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); 
-  gap:20px;
-}
-.food-card{
-  background:#fff5e6; 
-  border-radius:20px; 
-  box-shadow:0 8px 20px rgba(0,0,0,.25); 
-  overflow:hidden; 
-  display:flex; 
-  flex-direction:column; 
-  transition: transform 0.3s, box-shadow 0.3s;
-}
-.food-card:hover{
-  transform:scale(1.05); 
-  box-shadow:0 15px 35px rgba(0,0,0,.35);
-}
-.food-card img{
-  width:200px; 
-  height:200px; 
-  object-fit:cover; 
-  border-radius:20px; 
-  align-self:center; 
-  margin-top:15px;
-}
-.food-card .card-body{
-  padding:15px; 
-  flex:1; 
-  display:flex; 
-  flex-direction:column; 
-  justify-content:space-between;
-}
-.food-card h5{margin:0 0 10px 0;}
-.food-card p{margin:0 0 10px 0; flex:1;}
-.food-card a{
-  align-self:flex-start; 
-  padding:8px 12px; 
-  background:var(--color1); /* reemplazado --brand */
-  color:white; 
-  border-radius:12px; 
-  text-decoration:none; 
-  font-weight:600;
-}
-
-@media (max-width:900px){
-  body{flex-direction:column;} 
-  .sidebar{width:100%; height:auto;}
-}
-
+    @media (max-width:900px){
+      body{flex-direction:column;} 
+      .sidebar{width:100%; height:auto;}
+    }
   </style>
 </head>
 <body>
 <div class="sidebar">
-  <h2>Nica Raíces 🇳🇮</h2>
+<h2>YAMMIAPP</h2>
   <a href="index.html">inicio</a>
   <a href="historia.html">Historia</a>
   <a href="comidas.html">Comidas</a>
@@ -165,87 +169,114 @@ h1,h2,h3{margin-top:0; font-family:'Inter',sans-serif;}
   <a href="juegos.html">Juegos Interactivos</a>
 </div>
 
-  <div class="main">
-    <h1>Comidas Típicas de Nicaragua</h1>
+<div class="main">
+  <h1>Comidas Típicas de Nicaragua</h1>
 
-    <div class="search-bar">
-      <input type="text" id="searchInput" placeholder="Buscar comida..." onkeyup="filterFoods()">
-    </div>
-
-    <div class="food-container" id="foodContainer">
-      <div class="food-card">
-        <img src="https://tse2.mm.bing.net/th/id/OIP.xb8zO2QVB5PJnYQ3g5J9zgHaFj?rs=1&pid=ImgDetMain&o=7&rm=3" alt="Gallo Pinto">
-        <div class="card-body">
-          <h5>Gallo Pinto</h5>
-          <p>Mezcla de arroz y frijoles, acompañada de huevos o carne.</p>
-          <a href="#">Ver más</a>
-        </div>
-      </div>
-
-      <div class="food-card">
-        <img src="https://th.bing.com/th/id/R.6cf859f2d2858ee6c9915cb90e9bf6fb?rik=2YR74fRzhypz7A&pid=ImgRaw&r=0" alt="Vigorón">
-        <div class="card-body">
-          <h5>Vigorón</h5>
-          <p>Yuca con chicharrón y ensalada de repollo, típico de Masaya.</p>
-          <a href="#">Ver más</a>
-        </div>
-      </div>
-
-      <div class="food-card">
-        <img src="https://denicaragua.digital/wp-content/uploads/2023/01/Nacatamal.jpg" alt="Nacatamal">
-        <div class="card-body">
-          <h5>Nacatamal</h5>
-          <p>Plato tradicional a base de masa, carne, arroz y verduras envuelto en hoja de plátano.</p>
-          <a href="#">Ver más</a>
-        </div>
-      </div>
-
-      <div class="food-card">
-        <img src="https://tse2.mm.bing.net/th/id/OIP.uWxqpwUh8r_tu0g6mNlyFAHaE8?rs=1&pid=ImgDetMain&o=7&rm=3" alt="Indio Viejo">
-        <div class="card-body">
-          <h5>Indio Viejo</h5>
-          <p>Guiso de carne deshebrada, maíz y verduras, con un sabor auténtico.</p>
-          <a href="#">Ver más</a>
-        </div>
-      </div>
-
-      <div class="food-card">
-        <img src="https://nomadparadise.com/wp-content/uploads/2021/07/nicaragua-foods-018-1024x683.jpg" alt="Quesillo">
-        <div class="card-body">
-          <h5>Quesillo</h5>
-          <p>Tortilla de maíz con queso fresco, crema y salsa de vinagre.</p>
-          <a href="#">Ver más</a>
-        </div>
-      </div>
-
-      <div class="food-card">
-        <img src="https://th.bing.com/th/id/R.3f22d39a80dfd9acaa8db9a8e48637a9?rik=LdDp%2fTnEij6TYQ&pid=ImgRaw&r=0" alt="Baho">
-        <div class="card-body">
-          <h5>Baho</h5>
-          <p>Carne de res cocida al vapor con yuca y plátano, plato tradicional.</p>
-          <a href="#">Ver más</a>
-        </div>
-      </div>
-
-    </div>
+  <div class="search-bar">
+    <input type="text" id="searchInput" placeholder="Buscar..." onkeyup="filterFoods()">
   </div>
 
-  <script>
-    function filterFoods() {
-      const input = document.getElementById('searchInput');
-      const filter = input.value.toLowerCase();
-      const container = document.getElementById('foodContainer');
-      const cards = container.getElementsByClassName('food-card');
+  <div class="filter-bar">
+    <button class="active" onclick="filterCategory('all')">Todos</button>
+    <button onclick="filterCategory('comida')">Comida</button>
+    <button onclick="filterCategory('bebida')">Bebida</button>
+    <button onclick="filterCategory('postre')">Postre</button>
+  </div>
 
-      for (let i = 0; i < cards.length; i++) {
-        const title = cards[i].getElementsByTagName('h5')[0].textContent.toLowerCase();
-        if (title.indexOf(filter) > -1) {
-          cards[i].style.display = '';
-        } else {
-          cards[i].style.display = 'none';
-        }
-      }
+  <div class="food-container" id="foodContainer">
+    <!-- Comidas -->
+    <div class="food-card" data-category="comida">
+      <img src="https://tse2.mm.bing.net/th/id/OIP.xb8zO2QVB5PJnYQ3g5J9zgHaFj?rs=1&pid=ImgDetMain&o=7&rm=3" alt="Gallo Pinto">
+      <div class="card-body">
+        <h5>Gallo Pinto</h5>
+        <p>Mezcla de arroz y frijoles, acompañada de huevos o carne.</p>
+        <a href="comidas/gallopinto.html">Ver más</a>
+      </div>
+    </div>
+
+    <div class="food-card" data-category="comida">
+      <img src="https://th.bing.com/th/id/R.6cf859f2d2858ee6c9915cb90e9bf6fb?rik=2YR74fRzhypz7A&pid=ImgRaw&r=0" alt="Vigorón">
+      <div class="card-body">
+        <h5>Vigorón</h5>
+        <p>Yuca con chicharrón y ensalada de repollo, típico de Masaya.</p>
+        <a href="#">Ver más</a>
+      </div>
+    </div>
+
+    <!-- Bebidas -->
+    <div class="food-card" data-category="bebida">
+      <img src="https://tse3.mm.bing.net/th/id/OIP.mdIvft6Bbf_Ck0ydcbHTJgAAAA?rs=1&pid=ImgDetMain&o=7&rm=3" alt="Pinolillo">
+      <div class="card-body">
+        <h5>Pinolillo</h5>
+        <p>Bebida tradicional a base de maíz y cacao.</p>
+        <a href="#">Ver más</a>
+      </div>
+    </div>
+
+    <div class="food-card" data-category="bebida">
+      <img src="https://receitadelicia.com.br/wordpress/wp-content/files/receitadelicia.com.br/2023/10/suco-de-caju-natural.png" alt="Fresco de Cajú">
+      <div class="card-body">
+        <h5>Fresco de Cajú</h5>
+        <p>Bebida dulce hecha con cajú, muy refrescante.</p>
+        <a href="#">Ver más</a>
+      </div>
+    </div>
+
+    <!-- Postres -->
+    <div class="food-card" data-category="postre">
+      <img src="https://tse4.mm.bing.net/th/id/OIP.aFhRVluONytu4n5ggpmuZQHaHa?rs=1&pid=ImgDetMain&o=7&rm=3" alt="Tres Leches">
+      <div class="card-body">
+        <h5>Tres Leches</h5>
+        <p>Pastel esponjoso bañado en tres tipos de leche.</p>
+        <a href="#">Ver más</a>
+      </div>
+    </div>
+
+    <div class="food-card" data-category="postre">
+      <img src="https://tse1.mm.bing.net/th/id/OIP.isi6ZwmeMMSPq6t12jDbuQHaFj?rs=1&pid=ImgDetMain&o=7&rm=3" alt="Rosquillas">
+      <div class="card-body">
+        <h5>Rosquillas</h5>
+        <p>Galletas tradicionales hechas con maíz y queso.</p>
+        <a href="#">Ver más</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+function filterFoods() {
+  const input = document.getElementById('searchInput');
+  const filter = input.value.toLowerCase();
+  const container = document.getElementById('foodContainer');
+  const cards = container.getElementsByClassName('food-card');
+
+  for (let i = 0; i < cards.length; i++) {
+    const title = cards[i].getElementsByTagName('h5')[0].textContent.toLowerCase();
+    if (title.indexOf(filter) > -1) {
+      cards[i].style.display = '';
+    } else {
+      cards[i].style.display = 'none';
     }
-  </script>
+  }
+}
+
+function filterCategory(category) {
+  const container = document.getElementById('foodContainer');
+  const cards = container.getElementsByClassName('food-card');
+
+  for (let i = 0; i < cards.length; i++) {
+    if (category === 'all' || cards[i].dataset.category === category) {
+      cards[i].style.display = '';
+    } else {
+      cards[i].style.display = 'none';
+    }
+  }
+
+  const buttons = document.querySelectorAll('.filter-bar button');
+  buttons.forEach(btn => btn.classList.remove('active'));
+  event.target.classList.add('active');
+}
+</script>
 </body>
 </html>
+
